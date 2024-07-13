@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.db"
+}
+
+model Job {
+  id          Int      @id @default(autoincrement())
+  title       String
+  type        String
+  location    String
+  description String
+  salary      String
+  companyId   Int
+  company     Company  @relation(fields: [companyId], references: [id])
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model Company {
+  id           Int    @id @default(autoincrement())
+  name         String @unique
+  description  String
+  contactEmail String @unique
+  contactPhone String @unique
+  Job          Job[]
+}
