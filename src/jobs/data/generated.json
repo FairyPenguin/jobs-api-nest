@@ -1,0 +1,443 @@
+[
+  {
+    "id": 426,
+    "title": "Front End Developer",
+    "type": "Full-Time",
+    "location": "United States-New York-New York",
+    "description": "Join our team as a Front-End Developer in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+    "salary": "$90K",
+    "companyId": 3,
+    "company": {
+      "id": 3,
+      "name": "Innovative Technologies",
+      "description": "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
+      "contactEmail": "hr@innovativetech.com",
+      "contactPhone": "555-123-4567"
+    }
+  },
+
+  {
+    "id": 821,
+    "title": "UX Designer",
+    "type": "Part-Time",
+    "location": "United States-Florida-Miami",
+    "description": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
+    "salary": "$110K",
+    "companyId": 4,
+    "company": {
+      "id": 4,
+      "name": "Dream Technologies",
+      "description": "Port Solutions is a leading technology company specializing in software development and digital marketing. We are committed to providing our clients with cutting-edge solutions and our employees with a supportive and rewarding work environment.",
+      "contactEmail": "hello@dreamtech.com",
+      "contactPhone": "555-555-5555"
+    }
+  },
+
+  {
+    "id": 903,
+    "title": "Developer Advocate",
+    "type": "Full-Time",
+    "location": "United States-California-San Francisco",
+    "description": "Join our team as a Part-Time Front-End Developer in beautiful Pheonix, AZ. We are looking for a self-motivated individual with a passion for creating engaging user experiences. This position offers flexible hours and the opportunity to work remotely.",
+    "salary": "$140K",
+    "companyId": 5,
+    "company": {
+      "id": 5,
+      "name": "Supreme Apps",
+      "description": "Dolor Cloud is a leading technology company specializing in digital solutions for businesses of all sizes. With a focus on innovation and customer satisfaction, we are committed to delivering cutting-edge products and services.",
+      "contactEmail": "jobs@supremeapps.com",
+      "contactPhone": "555-345-6789"
+    }
+  },
+
+  {
+    "id": 562,
+    "title": "Front End Engineer",
+    "type": "Full-Time",
+    "location": "Canada-Ontario-Toronto",
+    "description": "Join our team as a Front-End Developer in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive salary and great benefits package available.",
+    "salary": "$130K",
+    "companyId": 6,
+    "company": {
+      "id": 6,
+      "name": "Vector Industries",
+      "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
+      "contactEmail": "work@vectorindustries.com",
+      "contactPhone": "123-456-7890"
+    }
+  },
+
+  {
+    "id": 741,
+    "title": "Junior Developer",
+    "type": "Part-Time",
+    "location": "United States-Texas-Houston",
+    "description": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+    "salary": "$80K",
+    "companyId": 7,
+    "company": {
+      "id": 7,
+      "name": "Hypertech",
+      "description": "Alpha Elite is a dynamic startup specializing in digital marketing and web development. We are committed to fostering a diverse and inclusive workplace where creativity and innovation thrive.",
+      "contactEmail": "jobs@hypertech.io",
+      "contactPhone": "234-567-8901"
+    }
+  },
+
+  {
+    "id": 183,
+    "title": "QA Engineer",
+    "type": "Full-Time",
+    "location": "United States-Washington-Seattle",
+    "description": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
+    "salary": "$120K",
+    "companyId": 8,
+    "company": {
+      "id": 8,
+      "name": "Prodigy Solutions",
+      "description": "Browning Technologies is a rapidly growing technology company specializing in e-commerce solutions. We offer a dynamic and collaborative work environment where employees are encouraged to think creatively and innovate.",
+      "contactEmail": "work@prodigysolutions.com",
+      "contactPhone": "345-678-9012"
+    }
+  },
+
+  {
+    "id": 649,
+    "title": "Marketing Coordinator",
+    "type": "Part-Time",
+    "location": "Canada-British Columbia-Vancouver",
+    "description": "Join our team as a Front-End Developer in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive salary and great benefits package available.",
+    "salary": "$70K",
+    "companyId": 9,
+    "company": {
+      "id": 9,
+      "name": "Innovation Labs",
+      "description": "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
+      "contactEmail": "marketing@innovationlabs.co",
+      "contactPhone": "234-567-8900"
+    }
+  },
+
+  {
+    "id": 891,
+    "title": "Designer",
+    "type": "Full-Time",
+    "location": "United States-Colorado-Denver",
+    "description": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
+    "salary": "$100K",
+    "companyId": 10,
+    "company": {
+      "id": 10,
+      "name": "Vertex Design",
+      "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
+      "contactEmail": "jobs@vertexdesign.com",
+      "contactPhone": "345-678-8901"
+    }
+  },
+
+  {
+    "id": 296,
+    "title": "Content Writer",
+    "type": "Part-Time",
+    "location": "United States-Illinois-Chicago",
+    "description": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+    "salary": "$60K",
+    "companyId": 11,
+    "company": {
+      "id": 11,
+      "name": "Proposition",
+      "description": "Dolor Cloud is a leading technology company specializing in digital solutions for businesses of all sizes. With a focus on innovation and customer satisfaction, we are committed to delivering cutting-edge products and services.",
+      "contactEmail": "writers@proposition.io",
+      "contactPhone": "567-890-1234"
+    }
+  },
+
+  {
+    "id": 427,
+    "title": "Software Engineer",
+    "type": "Full-Time",
+    "location": "United States-Arizona-Phoenix",
+    "description": "Join our team as a Part-Time Front-End Developer in beautiful Pheonix, AZ. We are looking for a self-motivated individual with a passion for creating engaging user experiences. This position offers flexible hours and the opportunity to work remotely.",
+    "salary": "$140K",
+    "companyId": 12,
+    "company": {
+      "id": 12,
+      "name": "Insight Solutions",
+      "description": "Port Solutions is a leading technology company specializing in software development and digital marketing. We are committed to providing our clients with cutting-edge solutions and our employees with a supportive and rewarding work environment.",
+      "contactEmail": "careers@insightsolutions.com",
+      "contactPhone": "234-567-8910"
+    }
+  },
+
+  {
+    "id": 182,
+    "title": "Product Designer",
+    "type": "Full-Time",
+    "location": "United States-New York-Brooklyn",
+    "description": "Join our team as a Front-End Developer in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+    "salary": "$130K",
+    "companyId": 13,
+    "company": {
+      "id": 13,
+      "name": "Simple Apps",
+      "description": "Alpha Elite is a dynamic startup specializing in digital marketing and web development. We are committed to fostering a diverse and inclusive workplace where creativity and innovation thrive.",
+      "contactEmail": "work@simpleapps.io",
+      "contactPhone": "345-678-9000"
+    }
+  },
+
+  {
+    "id": 392,
+    "title": "Marketing Manager",
+    "type": "Full-Time",
+    "location": "United States-Georgia-Atlanta",
+    "description": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
+    "salary": "$150K",
+    "companyId": 14,
+    "company": {
+      "id": 14,
+      "name": "Vertex Media",
+      "description": "Browning Technologies is a rapidly growing technology company specializing in e-commerce solutions. We offer a dynamic and collaborative work environment where employees are encouraged to think creatively and innovate.",
+      "contactEmail": "marketing@vertexmedia.com",
+      "contactPhone": "345-678-9001"
+    }
+  },
+
+  {
+    "id": 539,
+    "title": "Content Strategist",
+    "type": "Full-Time",
+    "location": "United States-Massachusetts-Boston",
+    "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as Vue or Angular.",
+    "salary": "$110K",
+    "companyId": 15,
+    "company": {
+      "id": 15,
+      "name": "Vertex Labs",
+      "description": "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
+      "contactEmail": "jobs@vertexlabs.co",
+      "contactPhone": "345-678-9002"
+    }
+  },
+
+  {
+    "id": 712,
+    "title": "Front End Developer",
+    "type": "Full-Time",
+    "location": "Canada-Ontario-Ottawa",
+    "description": "Join our team as a Front-End Developer in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive salary and great benefits package available.",
+    "salary": "$120K",
+    "companyId": 16,
+    "company": {
+      "id": 16,
+      "name": "Aurora Labs",
+      "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
+      "contactEmail": "work@auroralabs.com",
+      "contactPhone": "345-678-9003"
+    }
+  },
+
+  {
+    "id": 196,
+    "title": "DevOps Engineer",
+    "type": "Full-Time",
+    "location": "United States-California-Los Angeles",
+    "description": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
+    "salary": "$160K",
+    "companyId": 17,
+    "company": {
+      "id": 17,
+      "name": "Quark Solutions",
+      "description": "Dolor Cloud is a leading technology company specializing in digital solutions for businesses of all sizes. With a focus on innovation and customer satisfaction, we are committed to delivering cutting-edge products and services.",
+      "contactEmail": "careers@quarksolutions.com",
+      "contactPhone": "345-678-9004"
+    }
+  },
+
+  {
+    "id": 478,
+    "title": "React Developer",
+    "type": "Full-Time",
+    "location": "United States-Nevada-Las Vegas",
+    "description": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+    "salary": "$120K",
+    "companyId": 18,
+    "company": {
+      "id": 18,
+      "name": "Infinite Apps",
+      "description": "Port Solutions is a leading technology company specializing in software development and digital marketing. We are committed to providing our clients with cutting-edge solutions and our employees with a supportive and rewarding work environment.",
+      "contactEmail": "careers@infiniteapps.com",
+      "contactPhone": "345-678-9005"
+    }
+  },
+
+  {
+    "id": 145,
+    "title": "Junior Designer",
+    "type": "Part-Time",
+    "location": "Canada-Quebec-Montreal",
+    "description": "Join our team in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive salary and great benefits package available.",
+    "salary": "$80K",
+    "companyId": 19,
+    "company": {
+      "id": 19,
+      "name": "Pluto Labs",
+      "description": "Alpha Elite is a dynamic startup specializing in digital marketing and web development. We are committed to fostering a diverse and inclusive workplace where creativity and innovation thrive.",
+      "contactEmail": "work@plutolabs.io",
+      "contactPhone": "345-678-9006"
+    }
+  },
+
+  {
+    "id": 834,
+    "title": "UI Engineer",
+    "type": "Full-Time",
+    "location": "United States-Maryland-Baltimore",
+    "description": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
+    "salary": "$120K",
+    "companyId": 20,
+    "company": {
+      "id": 20,
+      "name": "Vector Corp",
+      "description": "Browning Technologies is a rapidly growing technology company specializing in e-commerce solutions. We offer a dynamic and collaborative work environment where employees are encouraged to think creatively and innovate.",
+      "contactEmail": "careers@vectorcorp.com",
+      "contactPhone": "345-678-9007"
+    }
+  },
+
+  {
+    "id": 619,
+    "title": "Javascript Developer",
+    "type": "Full-Time",
+    "location": "United States-New Jersey-Newark",
+    "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as Vue or Angular.",
+    "salary": "$110K",
+    "companyId": 21,
+    "company": {
+      "id": 21,
+      "name": "Dream Team",
+      "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
+      "contactEmail": "join@dreamteam.io",
+      "contactPhone": "345-678-9008"
+    }
+  },
+
+  {
+    "id": 193,
+    "title": "Fullstack Developer",
+    "type": "Full-Time",
+    "location": "United States-Utah-Salt Lake City",
+    "description": "Join our team in beautiful Portland, OR. We are looking for a skilled and enthusiastic individual to help us create innovative web solutions. Competitive salary and great benefits package available.",
+    "salary": "$130K",
+    "companyId": 22,
+    "company": {
+      "id": 22,
+      "name": "Innovation Labs",
+      "description": "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
+      "contactEmail": "jobs@innovationlabs.co",
+      "contactPhone": "345-678-9009"
+    }
+  },
+
+  {
+    "id": 763,
+    "title": "Back End Engineer",
+    "type": "Part-Time",
+    "location": "Canada-Alberta-Calgary",
+    "description": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
+    "salary": "$90K",
+    "companyId": 23,
+    "company": {
+      "id": 23,
+      "name": "Trident Solutions",
+      "description": "Dolor Cloud is a leading technology company specializing in digital solutions for businesses of all sizes. With a focus on innovation and customer satisfaction, we are committed to delivering cutting-edge products and services.",
+      "contactEmail": "careers@tridentsolutions.com",
+      "contactPhone": "345-678-9010"
+    }
+  },
+
+  {
+    "id": 947,
+    "title": "Data Analyst",
+    "type": "Full-Time",
+    "location": "Australia-New South Wales-Sydney",
+    "description": "Are you passionate about front-end development? Join our team in vibrant Brooklyn, NY, andexciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+    "salary": "$120K AUD",
+    "companyId": 24,
+    "company": {
+      "id": 24,
+      "name": "InnovaTech",
+      "description": "Port Solutions is a leading technology company specializing in software development and digital marketing. We are committed to providing our clients with cutting-edge solutions and our employees with a supportive and rewarding work environment.",
+      "contactEmail": "careers@innovatech.com.au",
+      "contactPhone": "02-345-6789-011"
+    }
+  },
+
+  {
+    "id": 321,
+    "title": "Social Media Manager",
+    "type": "Full-Time",
+    "location": "United States-Florida-Miami",
+    "description": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
+    "salary": "$80K",
+    "companyId": 25,
+    "company": {
+      "id": 25,
+      "name": "Domain Digital",
+      "description": "Alpha Elite is a dynamic startup specializing in digital marketing and web development. We are committed to fostering a diverse and inclusive workplace where creativity and innovation thrive.",
+      "contactEmail": "careers@domaindigital.com",
+      "contactPhone": "305-345-6789"
+    }
+  },
+
+  {
+    "id": 142,
+    "title": "Product Manager",
+    "type": "Full-Time",
+    "location": "United States-California-San Diego",
+    "description": "Exciting opportunity for a Full-Time Front-End Developer in bustling Atlanta, GA. We are seeking a talented individual with a passion for building elegant and scalable web applications. Join our team and make an impact!",
+    "salary": "$150K",
+    "companyId": 26,
+    "company": {
+      "id": 26,
+      "name": "Nebula Solutions",
+      "description": "Browning Technologies is a rapidly growing technology company specializing in e-commerce solutions. We offer a dynamic and collaborative work environment where employees are encouraged to think creatively and innovate.",
+      "contactEmail": "careers@nebulasolutions.com",
+      "contactPhone": "858-345-6789"
+    }
+  },
+
+  {
+    "id": 921,
+    "title": "Growth Hacker",
+    "type": "Full-Time",
+    "location": "United States-California-San Francisco",
+    "description": "We are seeking a talented Front-End Developer to join our team in Boston, MA. The ideal candidate will have strong skills in HTML, CSS, and JavaScript, with experience working with modern JavaScript frameworks such as Vue or Angular.",
+    "salary": "$150K",
+    "companyId": 27,
+    "company": {
+      "id": 27,
+      "name": "Vertex Scale",
+      "description": "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
+      "contactEmail": "jobs@vertexscale.com",
+      "contactPhone": "415-345-6789"
+    }
+  },
+
+  {
+    "id": 684,
+    "title": "Front End Engineer",
+    "type": "Full-Time",
+    "location": "United States-Massachusetts-Boston",
+    "description": "Join our team as a Front-End Developer in vibrant Brooklyn, NY, and work on exciting projects that make a difference. We offer competitive compensation and a collaborative work environment where your ideas are valued.",
+    "salary": "$140K",
+    "companyId": 28,
+    "company": {
+      "id": 2,
+      "name": "Tessellate Labs",
+      "description": "NewTek Solutions is a leading technology company specializing in web development and digital solutions. We pride ourselves on delivering high-quality products and services to our clients while fostering a collaborative and innovative work environment.",
+      "contactEmail": "jobs@tessellatelabs.com",
+      "contactPhone": "617-345-6789"
+    }
+  }
+]
