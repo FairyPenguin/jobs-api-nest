@@ -19,7 +19,7 @@ import { JobsService } from 'src/jobs/services/jobs/jobs.service';
 
 @Controller('jobs')
 export class JobsController {
-  constructor(private jobService: JobsService) {}
+  constructor(private jobService: JobsService) { }
   /**
    *
    *
@@ -57,7 +57,7 @@ export class JobsController {
   }
 
   /**
-   *
+   * ==> >= <= === !=
    */
 
   @Put(':id')
