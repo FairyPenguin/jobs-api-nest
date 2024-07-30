@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { Prisma } from '@prisma/client';
 import { CreateJobDto } from 'src/jobs/dtos/CreateJob.dto';
@@ -14,9 +14,18 @@ export class JobsService {
     return job;
   }
 
-  getUsers() {
-    return [];
+  getJobsList() {
+    const jobsList = this.prisma.job.findMany();
+    return jobsList;
   }
 
-  getUserById() { }
+  async getJobById(id: number) {
+    const user = await this.prisma.job.findUnique({
+      where: { id: id },
+    });
+    if (!user) {
+      throw new HttpException('User not found, Check the id again', 404);
+    }
+    return user;
+  }
 }

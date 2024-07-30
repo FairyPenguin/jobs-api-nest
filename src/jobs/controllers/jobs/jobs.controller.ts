@@ -12,6 +12,7 @@ import {
   UsePipes,
   ValidationPipe,
   Response,
+  ParseIntPipe,
 } from '@nestjs/common';
 
 import { CreateJobDto } from 'src/jobs/dtos/CreateJob.dto';
@@ -26,7 +27,7 @@ export class JobsController {
    *  */
   @Get('list')
   getJobsList() {
-    return ['Jobs List'];
+    return this.jobService.getJobsList();
   }
 
   /**
@@ -34,8 +35,8 @@ export class JobsController {
    */
 
   @Get(':id')
-  getJobById() {
-    return 'Job';
+  getJobById(@Param('id', ParseIntPipe) id: number) {
+    return this.jobService.getJobById(id);
   }
 
   /**
