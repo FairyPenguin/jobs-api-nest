@@ -20,7 +20,13 @@ export class JobsService {
     return jobsList;
   }
 
-  deleteJobById(id: number) {
+  async deleteJobById(id: number) {
+    const checkJobExisting = await this.getJobById(id);
+
+    if (!checkJobExisting) {
+      throw new HttpException('Job not found', 404);
+    }
+
     return this.prisma.job.delete({
       where: { id: id },
     });
