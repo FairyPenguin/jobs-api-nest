@@ -3,19 +3,19 @@ import {
   Delete,
   Get,
   Post,
-  Put,
   Body,
   Query,
   Param,
   Res,
-  RawBodyRequest,
   UsePipes,
   ValidationPipe,
   Response,
   ParseIntPipe,
+  Patch,
 } from '@nestjs/common';
 
 import { CreateJobDto } from 'src/jobs/dtos/CreateJob.dto';
+import { UpdateJobDto } from 'src/jobs/dtos/UpdateJob.dto';
 import { JobsService } from 'src/jobs/services/jobs/jobs.service';
 
 @Controller('jobs')
@@ -53,16 +53,19 @@ export class JobsController {
    *
    */
   @Delete(':id')
-  deleteSingleJob() {
-    return '55';
+  deleteSingleJob(@Param('id', ParseIntPipe) id: number) {
+    return this.jobService.deleteJobById(id);
   }
 
   /**
    * ==> >= <= === !=
    */
 
-  @Put(':id')
-  updateJob() {
-    return 'Updated';
+  @Patch(':id')
+  updateJob(
+    @Body() UpdateJobDto: UpdateJobDto,
+    @Param('id', ParseIntPipe) id: number,
+  ) {
+    return this.jobService.updateJobById(id, UpdateJobDto);
   }
 }
