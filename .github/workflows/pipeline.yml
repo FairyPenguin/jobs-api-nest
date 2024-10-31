@@ -107,7 +107,9 @@ jobs:
 
       - name: Move files to the final directory with sudo
         run: |
-          sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "sudo mv /tmp/docker-compose.yml /opt/projects/backend-nest/"
+          # sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "sudo mv /tmp/docker-compose.yml /opt/projects/backend-nest/"
+
+          echo "${{ secrets.VPS_PASSWORD }}" | sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "sudo -S mv /tmp/docker-compose.yml /opt/projects/backend-nest/"
 
   ##############################################################
   #  VPS Stage Start  Deploy |  Check health
