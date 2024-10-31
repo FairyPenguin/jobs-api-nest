@@ -11,6 +11,9 @@ echo "Starting deployment as user: $(whoami)"
 # Pull the latest image
 docker pull greyfighter/prepre:nest-app-v2 
 
+# Navigate to the project directory
+cd /opt/projects/backend-nest
+
 # docker compose 
 docker-compose -f docker-compose.yml pull
 
