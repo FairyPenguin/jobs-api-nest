@@ -8,6 +8,7 @@ services:
     deploy:
       replicas: 3
     ports:
-      - '8080:8080' # Expose first replica
-      - '8081:8080' # Expose second replica
-      - '8082:8080' # Expose third replica
+      - '8080-8082:8080'
+      # - '8080:8080' # Expose first replica
+      # - '8081:8080' # Expose second replica
+      # - '8082:8080' # Expose third replica
