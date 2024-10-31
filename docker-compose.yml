@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: greyfighter/prepre:nest-app-v2
+    restart: unless-stopped
     # container_name: nest-backend-app
     ports:
       - '8080-8082:8080'

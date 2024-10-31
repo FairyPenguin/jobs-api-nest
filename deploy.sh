@@ -43,4 +43,6 @@ docker ps | grep nest-backend || echo "No nest-backend containers running"    ec
 docker ps -q -f name=nest-backend | wc -l
 
 sshpass -p "$VPS_PASSWORD" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 'bash -s' < deploy.sh
+# cd # Navigate to the project directory # cd #
+cd /opt/projects/backend-nest/scripts
 rm deploy.sh
