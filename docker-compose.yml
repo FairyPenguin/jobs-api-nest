@@ -1,0 +1,11 @@
+services:
+  nest-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: greyfighter/prepre:nest-app-v2
+    # container_name: nest-backend-app
+    deploy:
+      replicas: 3
+    ports:
+      - '8888-8890:8888'
