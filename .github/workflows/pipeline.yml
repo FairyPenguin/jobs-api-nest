@@ -105,12 +105,23 @@ jobs:
         run: |
           sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -i ~/.ssh/id_rsa docker-compose.yml admin@49.13.174.222:/tmp/
 
+      - name: Copy deploy script file to temporary directory on VPS
+        run: |
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -i ~/.ssh/id_rsa deploy.sh admin@49.13.174.222:/tmp/
+
       - name: Move files to the final directory with sudo
         run: |
-          # sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "sudo mv /tmp/docker-compose.yml /opt/projects/backend-nest/"
 
           echo "${{ secrets.VPS_PASSWORD }}" | sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "sudo -S mv /tmp/docker-compose.yml /opt/projects/backend-nest/"
 
-  ##############################################################
-  #  VPS Stage Start  Deploy |  Check health
-  ##############################################################
+          echo "${{ secrets.VPS_PASSWORD }}" | sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "sudo -S mv /tmp/deploy.sh /opt/projects/backend-nest/scripts"
+
+        ##############################################################
+        #  VPS Stage Start  Deploy |  Check health
+        ##############################################################
+
+      - name: excute the deploy script
+        run: |
+          cd /opt/projects/backend-nest
+          pwd
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "chmod +x /opt/projects/backend-nest/scripts/deploy.sh && cd /opt/projects/backend-nest/scripts && ./deploy.sh"
