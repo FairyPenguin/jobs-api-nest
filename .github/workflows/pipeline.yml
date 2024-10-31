@@ -101,9 +101,13 @@ jobs:
           # First attempt - using key with password prompt
           sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -v -i ~/.ssh/id_rsa admin@49.13.174.222 "echo 'Connection successful!' && whoami" || echo "First attempt failed with $?"
 
-      - name: Copy Docker Compose files to VPS
+      - name: Copy Docker Compose files to temporary directory on VPS
         run: |
-          sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -i ~/.ssh/id_rsa docker-compose.yml admin@49.13.174.222:/opt/projects/backend-nest
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -i ~/.ssh/id_rsa docker-compose.yml admin@49.13.174.222:/tmp/
+
+      - name: Move files to the final directory with sudo
+        run: |
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "sudo mv /tmp/docker-compose.yml /opt/projects/backend-nest/"
 
   ##############################################################
   #  VPS Stage Start  Deploy |  Check health
