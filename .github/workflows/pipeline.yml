@@ -59,8 +59,39 @@ jobs:
           docker-compose -f docker-compose.yml build
           docker-compose -f docker-compose.yml push
 
-##############################################################
-##############################################################
-# VPS Stage Start
-##############################################################
-##############################################################
+      ##############################################################
+      ##############################################################
+      # VPS Stage Start
+      ##############################################################
+      ##############################################################
+
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+
+      - name: Set up SSH directory and keys
+        run: |
+          mkdir -p ~/.ssh
+          # Save the private key with proper line breaks
+          echo "${{ secrets.VPS_SSH_KEY }}" | sed 's/\\n/\n/g' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          # Save the public key
+          echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4/ggD+eWySay8W1q3cqi/aiddrHGPM0ZR1yLLixvDFpxc6Dq7HlFGQixBQ5KjC0JntNuSgnsi3X9tMW0vjfI4CxDHzXu5Ab9DHRMWXz5l4kYhOwlpKmJeyBu8Yk9ErEP7QUpz1E3L+9xSkV5dAZvzdcLjtgyXSjKB3GBdG9IbNlFiY9FsOF7FNXEKqXiORQDF0BFQJ39nZX9LYzRD7MUue05XiC85Skqr4nvVyePomRpWV85YUiYY/vw2aFHNiMGHm39YfrnOaq8ZgmYIo3eny2VmU8x3nyA09YVb4AzSK/PluAVnbCKBKPLjy1msP6FtC9PcLx0nPeL8xfpMN+K/7Prv/7dJkO1tyJEmzTDSoCREkLWmUTrqU42TjVkxfPbkQNSi5de1UrQaR6c2PyOURxQL8eY9xup3UOusoBIsxQps/VgNKTO8XcMZDSmyd1TXeAkHheqkRmoBdJCYmx4dv3HTuTRy3ft0AeVflNEIlM+bAlrVSjtLX5tUgNyuR60= mahmoud@mahmoud-Latitude-E5570" > ~/.ssh/id_rsa.pub
+          chmod 644 ~/.ssh/id_rsa.pub
+
+          # Add host key
+          ssh-keyscan -H 49.13.174.222 >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Debug - Check SSH Setup
+        run: |
+          echo "SSH directory contents:"
+          ls -la ~/.ssh
+          echo "Testing key file existence:"
+          test -f ~/.ssh/id_rsa && echo "Private key exists" || echo "Private key missing"
+          test -f ~/.ssh/id_rsa.pub && echo "Public key exists" || echo "Public key missing"
+
+      - name: Test SSH Connection
+        run: |
+          # First attempt - using key with password prompt
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -v -i ~/.ssh/id_rsa admin@49.13.174.222 "echo 'Connection successful!' && whoami" || echo "First attempt failed with $?"
