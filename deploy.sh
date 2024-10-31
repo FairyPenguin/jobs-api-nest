@@ -8,16 +8,24 @@ echo "$DOCKERHUB_TOKEN" | docker login --username "$DOCKERHUB_USERNAME" --passwo
 
 echo "Starting deployment as user: $(whoami)"
 
+# Remove only the old containers for the nest-backend service
+
 # Pull the latest image
-docker pull greyfighter/prepre:nest-app-v2 
+# docker pull greyfighter/prepre:nest-app-v2 
 
 # Navigate to the project directory
 cd /opt/projects/backend-nest
 
 # docker compose 
-docker-compose -f docker-compose.yml pull
+# docker-compose -f docker-compose.yml pull
 
-docker-compose -f docker-compose.yml up -d --force-recreate --scale nest-backend=3
+docker-compose rm -f nest-backend || true
+
+docker-compose pull
+
+docker-compose up -d --force-recreate --scale nest-backend=3
+
+# docker-compose -f docker-compose.yml up -d --force-recreate --scale nest-backend=3
 
 # Remove any lingering containers
 docker rm -f $(docker ps -a -q -f name=nest-backend) || true
