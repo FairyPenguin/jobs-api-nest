@@ -102,15 +102,8 @@ jobs:
           sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -v -i ~/.ssh/id_rsa admin@49.13.174.222 "echo 'Connection successful!' && whoami" || echo "First attempt failed with $?"
 
       - name: Copy Docker Compose files to VPS
-        uses: appleboy/scp-action@v0.1.5
-        with:
-          host: ${{ secrets.VPS_HOST }} # Your VPS IP or hostname
-          username: ${{ secrets.VPS_USER }} # Your VPS username
-          key: ${{ secrets.VPS_SSH_KEY }} # Your SSH private key
-          port: 22 # Change if your SSH runs on a different port
-          source: 'docker-compose.yml' # Add your files
-          target: '/opt/projects/backend-nest' # Change to your desired directory on the VPS
-
+        run: |
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" scp -i ~/.ssh/id_rsa docker-compose.yml admin@49.13.174.222:/opt/projects/backend-nest
 
   ##############################################################
   #  VPS Stage Start  Deploy |  Check health
