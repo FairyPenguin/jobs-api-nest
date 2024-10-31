@@ -21,9 +21,8 @@ cd /opt/projects/backend-nest
 
 docker-compose rm -f nest-backend || true
 
-docker-compose pull
+docker pull greyfighter/prepre:nest-app-v2
 
-docker-compose up -d --force-recreate --scale nest-backend=3
 
 # docker-compose -f docker-compose.yml up -d --force-recreate --scale nest-backend=3
 
@@ -33,8 +32,9 @@ docker rm -f $(docker ps -a -q -f name=nest-backend) || true
 # Remove existing container names to avoid conflicts
 docker compose rm -f || true
 
+docker-compose up -d --force-recreate --scale nest-backend=3
 # Start fresh with new containers
-docker compose up -d --force-recreate --scale nest-backend=3
+# docker compose up -d --force-recreate --scale nest-backend=3
 
 # Verify deployment
 echo "Verifying deployment..."
