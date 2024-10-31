@@ -124,4 +124,6 @@ jobs:
         run: |
           # cd /opt/projects/backend-nest
           # pwd
-          sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "chmod +x /opt/projects/backend-nest/scripts/deploy.sh && cd /opt/projects/backend-nest/scripts && ./deploy.sh"
+          # sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "chmod +x /opt/projects/backend-nest/scripts/deploy.sh && cd /opt/projects/backend-nest/scripts && ./deploy.sh"
+
+          sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 "chmod +x /opt/projects/backend-nest/scripts/deploy.sh && cd /opt/projects/backend-nest/scripts && DOCKERHUB_TOKEN='${{ secrets.DOCKERHUB_TOKEN }}' DOCKERHUB_USERNAME='${{ secrets.DOCKERHUB_USERNAME }}' ./deploy.sh"
