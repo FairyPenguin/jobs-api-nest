@@ -24,6 +24,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      ##############################################################
+      # Install deps and build the app Stage Start
+      ##############################################################
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,10 +36,10 @@ jobs:
       - name: Install PNPM Globally
         run: npm install -g pnpm
 
-      - name: Install deps
+      - name: Install nestjs app deps before build
         run: pnpm install
 
-      - name: Build the APP
+      - name: Build nestjs app to check build status
         run: pnpm build
 
       - name: Login to docker_hub
@@ -54,21 +58,22 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version  # Check version to confirm installation
 
-      - name: Build and push Docker images
+      - name: Build and push Docker images to docker_hub
         run: |
+          # 1- ==> Build the docker image usign docker-compose
           docker-compose -f docker-compose.yml build
+
+          # 2- ==> Bush the docker image usign docker-compose
           docker-compose -f docker-compose.yml push
 
       ##############################################################
-      ##############################################################
-      # VPS Stage Start
-      ##############################################################
+      # Connect to the VPS Stage Start
       ##############################################################
 
-      - name: Install sshpass
+      - name: Install sshpass on github container
         run: sudo apt-get install -y sshpass
 
-      - name: Set up SSH directory and keys
+      - name: Set up SSH directory and keys on github container
         run: |
           mkdir -p ~/.ssh
           # Save the private key with proper line breaks
@@ -83,7 +88,7 @@ jobs:
           ssh-keyscan -H 49.13.174.222 >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
 
-      - name: Debug - Check SSH Setup
+      - name: Debug - Check SSH Setup on github container
         run: |
           echo "SSH directory contents:"
           ls -la ~/.ssh
@@ -91,7 +96,22 @@ jobs:
           test -f ~/.ssh/id_rsa && echo "Private key exists" || echo "Private key missing"
           test -f ~/.ssh/id_rsa.pub && echo "Public key exists" || echo "Public key missing"
 
-      - name: Test SSH Connection
+      - name: Test SSH Connection to the VPS from the github container
         run: |
           # First attempt - using key with password prompt
           sshpass -p "${{ secrets.VPS_PASSWORD }}" ssh -v -i ~/.ssh/id_rsa admin@49.13.174.222 "echo 'Connection successful!' && whoami" || echo "First attempt failed with $?"
+
+      - name: Copy Docker Compose files to VPS
+        uses: appleboy/scp-action@v0.1.5
+        with:
+          host: ${{ secrets.VPS_HOST }} # Your VPS IP or hostname
+          username: ${{ secrets.VPS_USER }} # Your VPS username
+          key: ${{ secrets.VPS_SSH_KEY }} # Your SSH private key
+          port: 22 # Change if your SSH runs on a different port
+          source: 'docker-compose.yml' # Add your files
+          target: '/opt/projects/backend-nest' # Change to your desired directory on the VPS
+
+
+  ##############################################################
+  #  VPS Stage Start  Deploy |  Check health
+  ##############################################################
