@@ -6,6 +6,11 @@ FROM node:${NODE_VERSION}-slim
 
 # ENV PATH="$PNPM_HOME:$PATH"
 
+# Install OpenSSL
+RUN apt-get update -y && \
+    apt-get install -y openssl && \
+    apt-get clean
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
