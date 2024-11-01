@@ -34,7 +34,9 @@ services:
     image: postgres
     restart: always
     user: postgres
-    secrets: database-password
+    secrets:
+      - database-password
+
     environment:
       - POSTGRES_DB=nestdatabase
       - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
