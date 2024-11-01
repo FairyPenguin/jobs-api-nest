@@ -1,5 +1,9 @@
 ARG NODE_VERSION=22.9.0
 
+ARG UBUNTU=24.04.1
+
+FROM ubuntu:${24.04.1}
+
 FROM node:${NODE_VERSION}-slim 
 
 # ENV PNPM_HOME="/pnpm"
@@ -12,6 +16,7 @@ FROM node:${NODE_VERSION}-slim
 #     apt-get clean
 
 RUN apt update -y && apt upgrade -y && \
+    apt install curl -y && apt install wget -y && \
     apt install build-essential zlib1g-dev -y && \
     cd /usr/local/src/  && \
     wget https://www.openssl.org/source/openssl-3.0.8.tar.gz && \
