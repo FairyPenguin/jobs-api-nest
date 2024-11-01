@@ -56,4 +56,5 @@ volumes:
 
 secrets:
   database-password:
-    file: database/password.txt
+    # file: database/password.txt
+    file: /home/admin/database/password.txt
