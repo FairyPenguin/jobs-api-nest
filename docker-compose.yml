@@ -27,8 +27,8 @@ services:
       replicas: 3
 
     depends_on:
-      - database:
-          condition: service_healthy
+      database:
+        condition: service_healthy
 
   database:
     image: postgres
