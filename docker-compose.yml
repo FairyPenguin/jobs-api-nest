@@ -15,7 +15,7 @@ services:
       - database-password
 
     environment:
-      - DATABASE_URL=postgresql://postgres:$(cat /run/secrets/database-password)@db:5432/nestdatabase
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/nestdatabase
       - POSTGRES_HOST=db
       - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
       - POSTGRES_USER=postgres
