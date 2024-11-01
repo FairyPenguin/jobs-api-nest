@@ -11,7 +11,8 @@ FROM node:${NODE_VERSION}-slim
 #     apt-get install -y openssl && \
 #     apt-get clean
 
-RUN apt install build-essential zlib1g-dev -y && \
+RUN apt update -y && apt upgrade -y\
+    apt install build-essential zlib1g-dev -y && \
     cd /usr/local/src/  && \
     wget https://www.openssl.org/source/openssl-3.0.8.tar.gz && \
     tar xzvf openssl-3.0.8.tar.gz && \
