@@ -11,6 +11,46 @@ services:
       # - '8080:8080' # Expose first replica
       # - '8081:8080' # Expose second replica
       # - '8082:8080' # Expose third replica
+    secrets:
+      - database-password
+
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=nestjsdatabase
+      - POSTGRES_PORT=5432
+      - POSTGRES_SSLMODE=disable
+
     deploy:
       mode: replicated
       replicas: 3
+
+    depends_on:
+      - database:
+          condition: service_healthy
+
+  database:
+    image: postgres
+    restart: always
+    user: postgres
+    environment:
+      - POSTGRES_DB=nestdatabase
+      - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
+    expose:
+      - 5432
+    volumes:
+      - database-data: /var/lib/postgresql/data
+
+    healthcheck:
+      test: ['CMD', 'pg_isready']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  database-data:
+
+secrets:
+  database-password:
+    file: database/password.txt
