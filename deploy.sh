@@ -40,7 +40,7 @@ docker-compose up -d --force-recreate --scale nest-backend=3
 # docker compose up -d --force-recreate --scale nest-backend=3
 
 
-docker-compose exec nest-backend pnpx prisma migrate deploy
+docker-compose exec -T nest-backend pnpx prisma migrate deploy
 
 
 # Verify deployment
