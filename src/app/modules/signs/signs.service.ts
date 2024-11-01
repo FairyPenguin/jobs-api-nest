@@ -20,8 +20,8 @@ export class SignsService {
 
   }
 
-  findAll() {
-    const signsList = this.prisma.sign.findMany()
+  async findAll() {
+    const signsList = await this.prisma.sign.findMany()
     return signsList;
   }
 
