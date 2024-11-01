@@ -39,6 +39,10 @@ docker-compose up -d --force-recreate --scale nest-backend=3
 # Start fresh with new containers
 # docker compose up -d --force-recreate --scale nest-backend=3
 
+
+docker-compose exec nest-backend pnpx prisma migrate deploy
+
+
 # Verify deployment
 echo "Verifying deployment..."
 sleep 10  # Give containers time to start
