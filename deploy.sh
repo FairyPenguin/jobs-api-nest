@@ -48,7 +48,8 @@ docker ps | grep nest-backend || echo "No nest-backend containers running"    ec
 docker ps -q -f name=nest-backend | wc -l
 
 sleep 10
-docker-compose exec -T nest-backend pnpx prisma migrate deploy
+# docker-compose exec -T nest-backend pnpx prisma migrate deploy
+docker-compose exec -T nest-backend sh -c 'export DATABASE_URL=postgresql://postgres:$(cat /run/secrets/database-password)@db:5432/nestdatabase && pnpx prisma migrate deploy'
 
 
 # sshpass -p "$VPS_PASSWORD" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 'bash -s' 
