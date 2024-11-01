@@ -40,14 +40,16 @@ docker-compose up -d --force-recreate --scale nest-backend=3
 # docker compose up -d --force-recreate --scale nest-backend=3
 
 
-docker-compose exec -T nest-backend pnpx prisma migrate deploy
-
 
 # Verify deployment
 echo "Verifying deployment..."
 sleep 10  # Give containers time to start
 docker ps | grep nest-backend || echo "No nest-backend containers running"    echo "Number of running instances:"
 docker ps -q -f name=nest-backend | wc -l
+
+sleep 10
+docker-compose exec -T nest-backend pnpx prisma migrate deploy
+
 
 # sshpass -p "$VPS_PASSWORD" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 'bash -s' 
 # cd # Navigate to the project directory # cd #
