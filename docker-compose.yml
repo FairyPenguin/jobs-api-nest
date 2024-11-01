@@ -34,13 +34,14 @@ services:
     image: postgres
     restart: always
     user: postgres
+    secrets: database-password
     environment:
       - POSTGRES_DB=nestdatabase
       - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
     expose:
       - 5432
     volumes:
-      - database-data: /var/lib/postgresql/data
+      - database-data:/var/lib/postgresql/data
 
     healthcheck:
       test: ['CMD', 'pg_isready']
