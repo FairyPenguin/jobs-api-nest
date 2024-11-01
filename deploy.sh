@@ -21,6 +21,8 @@ cd /opt/projects/backend-nest
 
 docker-compose rm -f nest-backend || true
 
+docker-compose rm -f backend-nest_database_1 || true
+
 docker pull greyfighter/prepre:nest-app-v2
 
 
@@ -28,6 +30,7 @@ docker pull greyfighter/prepre:nest-app-v2
 
 # Remove any lingering containers
 docker rm -f $(docker ps -a -q -f name=nest-backend) || true
+docker rm -f $(docker ps -a -q -f name=backend-nest_database_1) || true
 
 # Remove existing container names to avoid conflicts
 docker compose rm -f || true
@@ -42,7 +45,7 @@ sleep 10  # Give containers time to start
 docker ps | grep nest-backend || echo "No nest-backend containers running"    echo "Number of running instances:"
 docker ps -q -f name=nest-backend | wc -l
 
-sshpass -p "$VPS_PASSWORD" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 'bash -s' 
+# sshpass -p "$VPS_PASSWORD" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 'bash -s' 
 # cd # Navigate to the project directory # cd #
 cd /opt/projects/backend-nest/scripts
 rm deploy.sh
