@@ -48,4 +48,5 @@ docker ps -q -f name=nest-backend | wc -l
 # sshpass -p "$VPS_PASSWORD" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 'bash -s' 
 # cd # Navigate to the project directory # cd #
 cd /opt/projects/backend-nest/scripts
-rm deploy.sh
+echo ${pwd}
+sudo rm deploy.sh
