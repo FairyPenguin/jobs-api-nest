@@ -23,6 +23,7 @@ RUN apt-get update && \
 
 
 RUN node --version && npm --version
+ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN npm install -g pnpm
 ENV PNPM_HOME="/root/.local/share/pnpm"
@@ -97,5 +98,5 @@ RUN apt update -y && apt upgrade -y && \
 
 EXPOSE 8080
 
-CMD ["node", "dist/main"]
+CMD ["/usr/bin/node", "dist/main"]
 
