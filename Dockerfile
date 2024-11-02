@@ -13,7 +13,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
     apt-get install -y curl ca-certificates gnupg && \
-    curl -fsSL https://deb.nodesource.com/setup_23.1.0 | bash - && \
+    curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
     apt-get install -y nodejs && \
     # Install build essentials (needed for some npm packages)
     apt-get install -y build-essential && \
