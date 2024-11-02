@@ -10,7 +10,8 @@ ARG NODE_DIGSET=sha256:64269df7ff9275757982994f6ee37268367d924f5f9086b5b0ed2e81e
 FROM ubuntu@${UBUNTU_DIGSET} AS build
 # FROM node@${NODE_DIGSET}
 
-RUN apt install curl -y && \
+RUN apt update -y && apt upgrade -y && \
+    apt install curl -y && \
     echo $(curl --version)
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
