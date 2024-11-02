@@ -14,7 +14,7 @@ RUN apt update -y && apt upgrade -y && \
     apt install curl -y && \
     echo $(curl --version)
 
-ENV NVM_DIR="$HOME/.nvm"
+# ENV NVM_DIR="$HOME/.nvm"
 
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash 
 
