@@ -17,6 +17,7 @@ RUN apt update -y && apt upgrade -y && \
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
     nvm install 23.1.0 && \
     # should print `v0.39.7`
+    exec bash && \
     nvm -v && \
     # should print `v23.1.0`
     echo "Node version is:   ➡️" ${(node -v)} && \
