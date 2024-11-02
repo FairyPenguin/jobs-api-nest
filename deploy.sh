@@ -48,9 +48,21 @@ docker ps | grep nest-backend || echo "No nest-backend containers running"    ec
 docker ps -q -f name=nest-backend | wc -l
 
 sleep 10
+
+# Run the migration after  10 seconds of the container creation 
 # docker-compose exec -T nest-backend pnpx prisma migrate deploy
 docker-compose exec -T nest-backend sh -c 'export DATABASE_URL=postgresql://postgres:$(cat /run/secrets/database-password)@database:5432/nestdatabase && pnpx prisma migrate deploy'
 
+
+
+ 
+: || {
+a or --all: This option tells Docker to remove all unused images, not just the dangling ones. This means it will remove any images that are not currently associated with a container, regardless of whether they have a tag.
+f or --force: This option forces the removal of the images without prompting for confirmation. It’s useful for automation or scripts where you don’t want to manually confirm the action.
+}
+
+# Remove all unused images (those not in use by any container)
+docker image prune -a -f
 
 # sshpass -p "$VPS_PASSWORD" ssh -i ~/.ssh/id_rsa admin@49.13.174.222 'bash -s' 
 # cd # Navigate to the project directory # cd #
