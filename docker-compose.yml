@@ -13,10 +13,11 @@ services:
       # - '8082:8080' # Expose third replica
     secrets:
       - database-password
-
+    command: /usr/bin/node dist/main
     environment:
       # >>>>>>>>>   =postgresql://postgres:11@localhost:5432/nestjsdatabase?schema=public
       # - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/nestdatabase
+      - NODE_ENV=production
       - POSTGRES_DB=nestjsdatabase #name
       - POSTGRES_HOST=database #hostinside docker netework
       - POSTGRES_USER=postgres
