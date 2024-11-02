@@ -98,5 +98,5 @@ RUN apt update -y && apt upgrade -y && \
 
 EXPOSE 8080
 
-CMD ["/usr/local/bin/node", "dist/main"]
+CMD ["pnpm", "start"]
 
