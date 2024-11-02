@@ -23,12 +23,12 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | b
     nvm install 23.1.0
 
 
-RUN nvm -v && \
-    nvm install 23.1.0 && \
-    # should print `v23.1.0`
-    echo "Node version is:   ➡️" ${(node -v)} && \
-    # should print `10.9.0`
-    echo "Npm version is:   ➡️" ${npm -v }
+# RUN nvm -v && \
+#     nvm install 23.1.0 && \
+#     # should print `v23.1.0`
+#     echo "Node version is:   ➡️" ${(node -v)} && \
+#     # should print `10.9.0`
+#     echo "Npm version is:   ➡️" ${npm -v }
 
 WORKDIR /usr/src/app
 
