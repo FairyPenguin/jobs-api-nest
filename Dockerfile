@@ -14,13 +14,16 @@ RUN apt update -y && apt upgrade -y && \
     apt install curl -y && \
     echo $(curl --version)
 
+ENV NVM_DIR="$HOME/.nvm"
+
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash 
 
 # should print `v0.39.7`
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash && \
     export NVM_DIR="$HOME/.nvm" && \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
-    nvm install 23.1.0
+    nvm install 23.1.0 && \
+    npm install -g pnpm
 
 
 # RUN nvm -v && \
@@ -36,7 +39,7 @@ COPY package*.json ./
 
 COPY ./pnpm-lock.yaml ./
 
-RUN npm install -g pnpm
+# RUN npm install -g pnpm
 
 RUN pnpm --version && \
     echo  "Pnpm version is:   ➡️" $(pnpm --version)
