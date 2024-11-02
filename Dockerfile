@@ -7,23 +7,24 @@ ARG NODE_DIGSET=sha256:64269df7ff9275757982994f6ee37268367d924f5f9086b5b0ed2e81e
 # FROM ubuntu:${UBUNTU_VERSION}
 # FROM node:${NODE_VERSION}-slim 
 
-FROM ubuntu@${UBUNTU_DIGSET} AS build
-# FROM node@${NODE_DIGSET}
+# FROM ubuntu@${UBUNTU_DIGSET} AS build
+FROM node@${NODE_DIGSET} AS build
+
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
-    apt-get install -y curl ca-certificates gnupg && \
-    curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
-    apt-get install -y nodejs && \
-    # Install build essentials (needed for some npm packages)
-    apt-get install -y build-essential && \
-    # Clean up
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && \
+#     apt-get install -y curl ca-certificates gnupg && \
+#     curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
+#     apt-get install -y nodejs && \
+#     # Install build essentials (needed for some npm packages)
+#     apt-get install -y build-essential && \
+#     # Clean up
+#     apt-get clean && \
+#     rm -rf /var/lib/apt/lists/*
 
 
-RUN node --version && npm --version
-ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# RUN node --version && npm --version
+# ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN npm install -g pnpm
 ENV PNPM_HOME="/root/.local/share/pnpm"
@@ -69,9 +70,22 @@ COPY . .
 
 RUN pnpm build
 
-# Stage 2: the production image
+# Stage 2: the production image 
 
 FROM ubuntu@${UBUNTU_DIGSET}
+
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y curl ca-certificates gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
+    apt-get install -y nodejs && \
+    # Install build essentials (needed for some npm packages)
+    apt-get install -y build-essential && \
+    apt install curl -y && apt install wget -y && \
+    apt-get install -y openssl && \
+    # Clean up
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 
 # Set the working directory for the final image
 WORKDIR /usr/src/app
@@ -91,12 +105,12 @@ COPY package*.json ./
 #     # should print `10.9.0`
 #     echo "Npm version is:   ➡️" ${npm -v }
 
-RUN apt update -y && apt upgrade -y && \
-    apt install curl -y && apt install wget -y && \
-    apt-get install -y openssl && \
-    apt-get clean
+# RUN apt update -y && apt upgrade -y && \
+#     apt install curl -y && apt install wget -y && \
+#     apt-get install -y openssl && \
+#     apt-get clean
 
 EXPOSE 8080
 
-CMD ["pnpm", "start"]
+CMD ["node", "dist/main"]
 
