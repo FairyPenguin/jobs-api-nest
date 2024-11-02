@@ -15,10 +15,12 @@ RUN apt update -y && apt upgrade -y && \
     echo $(curl --version)
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
-    nvm install 23.1.0 && \
-    # should print `v0.39.7`
-    exec bash && \
-    nvm -v && \
+    nvm install 23.1.0 
+
+# should print `v0.39.7`
+RUN exec bash 
+
+RUN nvm -v && \
     # should print `v23.1.0`
     echo "Node version is:   ➡️" ${(node -v)} && \
     # should print `10.9.0`
