@@ -9,21 +9,39 @@ ARG NODE_DIGSET=sha256:64269df7ff9275757982994f6ee37268367d924f5f9086b5b0ed2e81e
 
 FROM ubuntu@${UBUNTU_DIGSET} AS build
 # FROM node@${NODE_DIGSET}
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update -y && apt upgrade -y && \
-    apt install curl -y && \
-    echo $(curl --version)
+RUN apt-get update && \
+    apt-get install -y curl ca-certificates gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_23.1.0 | bash - && \
+    apt-get install -y nodejs && \
+    # Install build essentials (needed for some npm packages)
+    apt-get install -y build-essential && \
+    # Clean up
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
+RUN node --version && npm --version
+
+RUN npm install -g pnpm
+ENV PNPM_HOME="/root/.local/share/pnpm"
+ENV PATH="${PATH}:${PNPM_HOME}"
+
+# RUN apt update -y && apt upgrade -y && \
+#     apt install curl -y && \
+#     echo $(curl --version)
 
 # ENV NVM_DIR="$HOME/.nvm"
 
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash 
 
 # should print `v0.39.7`
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash && \
-    export NVM_DIR="$HOME/.nvm" && \
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
-    nvm install 23.1.0 && \
-    npm install -g pnpm
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash && \
+#     export NVM_DIR="$HOME/.nvm" && \
+#     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
+#     nvm install 23.1.0 && \
+#     npm install -g pnpm
 
 
 # RUN nvm -v && \
@@ -41,8 +59,8 @@ COPY ./pnpm-lock.yaml ./
 
 # RUN npm install -g pnpm
 
-RUN pnpm --version && \
-    echo  "Pnpm version is:   ➡️" $(pnpm --version)
+# RUN pnpm --version && \
+#     echo  "Pnpm version is:   ➡️" $(pnpm --version)
 
 RUN pnpm install
 
@@ -63,14 +81,14 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY package*.json ./
 
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
-    nvm install 23.1.0 && \
-    # should print `v0.39.7`
-    nvm -v && \
-    # should print `v23.1.0`
-    echo "Node version is:   ➡️" ${(node -v)} && \
-    # should print `10.9.0`
-    echo "Npm version is:   ➡️" ${npm -v }
+# RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
+#     nvm install 23.1.0 && \
+#     # should print `v0.39.7`
+#     nvm -v && \
+#     # should print `v23.1.0`
+#     echo "Node version is:   ➡️" ${(node -v)} && \
+#     # should print `10.9.0`
+#     echo "Npm version is:   ➡️" ${npm -v }
 
 RUN apt update -y && apt upgrade -y && \
     apt install curl -y && apt install wget -y && \
