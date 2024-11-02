@@ -14,13 +14,14 @@ RUN apt update -y && apt upgrade -y && \
     apt install curl -y && \
     echo $(curl --version)
 
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
-    nvm install 23.1.0 
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash 
 
 # should print `v0.39.7`
-RUN exec bash 
+RUN export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 
 RUN nvm -v && \
+    nvm install 23.1.0 && \
     # should print `v23.1.0`
     echo "Node version is:   ➡️" ${(node -v)} && \
     # should print `10.9.0`
