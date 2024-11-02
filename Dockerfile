@@ -29,7 +29,7 @@ RUN pnpm build
 
 # Stage 2: Run
 FROM ubuntu@${UBUNTU_DIGSET}
-FROM node@${NODE_DIGSET}}
+FROM node@${NODE_DIGSET}
 
 RUN apt update -y && apt upgrade -y && \
     apt install curl -y && apt install wget -y && \
