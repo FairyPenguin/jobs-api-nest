@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install OpenSSL 3.4.0
-RUN curl -O https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz && \
+RUN curl -L -O https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz && \
     tar -xzf openssl-3.3.2.tar.gz && \
     cd openssl-3.4.0 && \
     ./config && \
