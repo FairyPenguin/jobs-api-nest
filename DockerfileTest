@@ -1,0 +1,62 @@
+ARG NODE_VERSION=22.9.0
+ARG UBUNTU_VERSION=24.04.1
+
+ARG UBUNTU_DIGSET=sha256:bd6cd2105f1edfc46ba5f27bd32837e4ba0ed342c565fc4b1ba49b1573f23ca6
+ARG NODE_DIGSET=sha256:64269df7ff9275757982994f6ee37268367d924f5f9086b5b0ed2e81e7c2ff20
+
+FROM node@${NODE_DIGSET} AS build
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN npm install -g pnpm
+ENV PNPM_HOME="/root/.local/share/pnpm"
+ENV PATH="${PATH}:${PNPM_HOME}"
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+COPY ./pnpm-lock.yaml ./
+
+RUN pnpm install
+
+COPY . .
+
+RUN pnpm build
+
+# Optional: Clean up dev dependencies and only keep production ones
+RUN pnpm prune --prod
+
+# Stage 2: the production image 
+
+FROM ubuntu@${UBUNTU_DIGSET}
+
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y curl ca-certificates gnupg && \
+    curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g pnpm && \
+    # Install build essentials (needed for some npm packages)
+    apt-get install -y build-essential && \
+    apt install curl -y && apt install wget -y && \
+    apt-get install -y openssl && \
+    # Clean up
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
+# Set the working directory for the final image
+WORKDIR /usr/src/app
+
+# Copy only the necessary files from the builder stage
+COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/package.json ./package.json
+COPY --from=build /usr/src/app/package.json ./pnpm-lock.yaml
+COPY --from=build /usr/src/app/prisma ./prisma
+
+
+EXPOSE 8080
+
+CMD ["node", "dist/main"]
+
