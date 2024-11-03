@@ -44,7 +44,8 @@ FROM node@${NODE_DIGSET}
 RUN apt-get update && apt-get install -y \
     openssl libssl-dev \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* && \ 
+    npm -g install pnpm
 
 WORKDIR /usr/src/app
 
