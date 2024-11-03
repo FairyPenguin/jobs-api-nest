@@ -1,26 +1,25 @@
 ARG NODE_DIGSET=sha256:64269df7ff9275757982994f6ee37268367d924f5f9086b5b0ed2e81e7c2ff20
-
 FROM node@${NODE_DIGSET} AS build
 
 
 # Install dependencies for building OpenSSL and other packages
-RUN apt-get update && apt-get install -y \
-    curl \
-    build-essential \
-    checkinstall \
-    git \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y \
+#     curl \
+#     build-essential \
+#     checkinstall \
+#     git \
+#     && apt-get clean \
+#     && rm -rf /var/lib/apt/lists/*
 
-# Install OpenSSL 3.4.0
-RUN curl -L -O https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz && \
-    tar -xzf openssl-3.3.2.tar.gz && \
-    cd openssl-3.3.2 && \
-    ./config && \
-    make && \
-    make install && \
-    cd .. && \
-    rm -rf openssl-3.4.0 openssl-3.3.2.tar.gz
+# # Install OpenSSL 3.4.0
+# RUN curl -L -O https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz && \
+#     tar -xzf openssl-3.3.2.tar.gz && \
+#     cd openssl-3.3.2 && \
+#     ./config && \
+#     make && \
+#     make install && \
+#     cd .. && \
+#     rm -rf openssl-3.4.0 openssl-3.3.2.tar.gz
 
 
 # Set environment variable for pnpm
@@ -41,10 +40,16 @@ RUN pnpm build && pnpm prune --prod
 FROM node@${NODE_DIGSET} 
 
 # Install OpenSSL 3.x
-RUN apt-get update && apt-get install -y \
-    openssl libssl-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* && \ 
+# RUN apt-get update && apt-get install -y \
+#     openssl libssl-dev \
+#     && apt-get clean \
+#     && rm -rf /var/lib/apt/lists/* && \ 
+#     npm -g install pnpm
+
+# Install OpenSSL 3.x
+RUN apt-get update && apt-get upgrade -y \
+    echo $($ sudo apt show openssl) && \
+    apt install openssl -y &&\
     npm -g install pnpm
 
 WORKDIR /usr/src/app
