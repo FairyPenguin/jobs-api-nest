@@ -15,12 +15,12 @@ RUN apt-get update && apt-get install -y \
 # Install OpenSSL 3.4.0
 RUN curl -L -O https://github.com/openssl/openssl/releases/download/openssl-3.3.2/openssl-3.3.2.tar.gz && \
     tar -xzf openssl-3.3.2.tar.gz && \
-    cd openssl-3.4.0 && \
+    cd openssl-3.3.2 && \
     ./config && \
     make && \
     make install && \
     cd .. && \
-    rm -rf openssl-3.4.0 openssl-3.4.0.tar.gz
+    rm -rf openssl-3.4.0 openssl-3.3.2.tar.gz
 
 
 # Set environment variable for pnpm
