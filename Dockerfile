@@ -31,7 +31,7 @@ COPY . .
 RUN pnpm build && pnpm prune --prod
 
 # Stage 2: the production image
-FROM node:${NODE_VERSION}
+FROM node@${NODE_DIGSET} 
 
 # Install OpenSSL 3.x
 RUN apt-get update && apt-get install -y \
