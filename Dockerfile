@@ -92,8 +92,12 @@ WORKDIR /usr/src/app
 
 # Copy only the necessary files from the builder stage
 COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/package.json ./package.json
+COPY --from=build /usr/src/app/package.json/pnpm-lock.yaml ./
+
 # COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY package*.json ./
+# COPY package*.json ./
 
 
 # RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash && \
