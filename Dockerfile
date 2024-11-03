@@ -1,6 +1,6 @@
 ARG NODE_DIGSET=sha256:64269df7ff9275757982994f6ee37268367d924f5f9086b5b0ed2e81e7c2ff20
 
-FROM node:${NODE_VERSION}-slim 
+FROM node@${NODE_DIGSET} AS build
 
 
 # Install dependencies for building and OpenSSL
