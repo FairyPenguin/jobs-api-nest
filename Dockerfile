@@ -78,6 +78,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y curl ca-certificates gnupg && \
     curl -fsSL https://deb.nodesource.com/setup_23.x | bash - && \
     apt-get install -y nodejs && \
+    npm install -g pnpm && \
     # Install build essentials (needed for some npm packages)
     apt-get install -y build-essential && \
     apt install curl -y && apt install wget -y && \
