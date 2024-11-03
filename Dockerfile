@@ -3,18 +3,25 @@ ARG NODE_DIGSET=sha256:64269df7ff9275757982994f6ee37268367d924f5f9086b5b0ed2e81e
 FROM node@${NODE_DIGSET} AS build
 
 
-# Install dependencies for building and OpenSSL
+# Install dependencies for building OpenSSL and other packages
 RUN apt-get update && apt-get install -y \
     curl \
-    ca-certificates \
-    gnupg \
-    software-properties-common \
-    && curl -fsSL https://packages.debian.org/openssl3.asc | gpg --dearmor -o /usr/share/keyrings/openssl3-archive-keyring.gpg \
-    && echo "deb [signed-by=/usr/share/keyrings/openssl3-archive-keyring.gpg] https://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/openssl3.list \
-    && apt-get update \
-    && apt-get install -y openssl libssl-dev \
+    build-essential \
+    checkinstall \
+    git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Install dependencies for building and OpenSSL
+# Install OpenSSL 3.x
+RUN curl -O https://www.openssl.org/source/openssl-3.2.2.tar.gz && \
+    tar -xzf openssl-3.2.2.tar.gz && \
+    cd openssl-3.2.2 && \
+    ./config && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf openssl-3.2.2 openssl-3.2.2.tar.gz
 
 # Set environment variable for pnpm
 ENV PNPM_HOME="/root/.local/share/pnpm"
