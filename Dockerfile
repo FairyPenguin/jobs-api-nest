@@ -47,7 +47,7 @@ FROM node@${NODE_DIGSET}
 #     npm -g install pnpm
 
 # Install OpenSSL 3.x
-RUN apt-get update && apt-get upgrade -y \
+RUN apt-get update && apt-get upgrade -y && \
     echo $($ sudo apt show openssl) && \
     apt install openssl -y &&\
     npm -g install pnpm
