@@ -70,6 +70,9 @@ COPY . .
 
 RUN pnpm build
 
+# Optional: Clean up dev dependencies and only keep production ones
+RUN pnpm prune --prod
+
 # Stage 2: the production image 
 
 FROM ubuntu@${UBUNTU_DIGSET}
@@ -96,6 +99,7 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/package.json ./package.json
 COPY --from=build /usr/src/app/package.json ./pnpm-lock.yaml
+COPY --from=build /usr/src/app/prisma ./prisma
 
 # COPY --from=builder /usr/src/app/node_modules ./node_modules
 # COPY package*.json ./
