@@ -7,8 +7,8 @@ services:
     restart: unless-stopped
     expose:
       - 8080 # Exposing the backend service on port 8080 inside the container network
-      - 8081 # Exposing the second backend instance on port 8081
-      - 8082 # Exposing the third backend instance on port 8082
+      # - 8081 # Exposing the second backend instance on port 8081
+      # - 8082 # Exposing the third backend instance on port 8082
 
     networks:
       - backend_network
