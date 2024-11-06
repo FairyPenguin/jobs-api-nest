@@ -5,12 +5,20 @@ services:
       dockerfile: Dockerfile
     image: greyfighter/prepre:nest-app-v2
     restart: unless-stopped
+    expose:
+      - 8080
+      - 8081
+      - 8082
+    networks:
+      - backend_network
+      - db_network
+
     # container_name: nest-backend-app
-    ports:
-      - '8080-8082:8080'
-      # - '8080:8080' # Expose first replica
-      # - '8081:8080' # Expose second replica
-      # - '8082:8080' # Expose third replica
+    # ports:
+    #   - '8080-8082:8080'
+    # - '8080:8080' # Expose first replica
+    # - '8081:8080' # Expose second replica
+    # - '8082:8080' # Expose third replica
     secrets:
       - database-password
     # command: /usr/local/bin/node dist/main
@@ -54,6 +62,9 @@ services:
       timeout: 5s
       retries: 5
 
+    networks:
+      - db_network
+
 volumes:
   database-data:
 
@@ -61,3 +72,9 @@ secrets:
   database-password:
     # file: database/password.txt
     file: /home/admin/database/password.txt
+
+networks:
+  backend_network:
+    external: true
+  db_network:
+    external: true
