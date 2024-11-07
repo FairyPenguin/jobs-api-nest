@@ -5,10 +5,10 @@ services:
       dockerfile: Dockerfile
     image: greyfighter/prepre:nest-app-v2
     restart: unless-stopped
-    ports:
-      - '8080:8080' # External port 8080 maps to internal port 8080
-      - '8081:8081' # External port 8081 maps to internal port 8081
-      - '8082:8082' # External port 8082 maps to internal port 8082
+    # ports:
+    #   - '8080:8080' # External port 8080 maps to internal port 8080
+    #   - '8081:8081' # External port 8081 maps to internal port 8081
+    #   - '8082:8082' # External port 8082 maps to internal port 8082
     networks:
       - backend_network
       - db_network
