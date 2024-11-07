@@ -33,9 +33,9 @@ services:
       - POSTGRES_SSLMODE=disable
       - POSTGRES_PORT=5432
 
-    deploy:
-      mode: replicated
-      replicas: 3
+    # deploy:
+    #   mode: replicated
+    #   replicas: 3
 
     depends_on:
       database:
