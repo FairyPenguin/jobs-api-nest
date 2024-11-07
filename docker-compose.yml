@@ -7,8 +7,8 @@ services:
     restart: unless-stopped
     # ports:
     #   - '8080:8080'
-    # expose:
-    #   - 1234
+    expose:
+      - 8080
     networks:
       - backend_network
       - db_network
