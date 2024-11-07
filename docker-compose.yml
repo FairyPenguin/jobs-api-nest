@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     image: greyfighter/prepre:nest-app-v2
     restart: unless-stopped
-    ports:
-      - '8080:8080'
+    # ports:
+    #   - '8080:8080'
     # expose:
     #   - 1234
     networks:
