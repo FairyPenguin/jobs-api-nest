@@ -4,7 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     image: greyfighter/prepre:nest-app-v2
-    container_name: name
     restart: unless-stopped
     ports:
       - '8080:8080' # External port 8080 maps to internal port 8080
