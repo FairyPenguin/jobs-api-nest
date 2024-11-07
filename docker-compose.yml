@@ -5,11 +5,10 @@ services:
       dockerfile: Dockerfile
     image: greyfighter/prepre:nest-app-v2
     restart: unless-stopped
-    expose:
-      - 8080 # Exposing the backend service on port 8080 inside the container network
-      - 8081 # Exposing the second backend instance on port 8081
-      - 8082 # Exposing the third backend instance on port 8082
-
+    ports:
+      - '8080:8080' # External port 8080 maps to internal port 8080
+      - '8081:8081' # External port 8081 maps to internal port 8081
+      - '8082:8082' # External port 8082 maps to internal port 8082
     networks:
       - backend_network
       - db_network
