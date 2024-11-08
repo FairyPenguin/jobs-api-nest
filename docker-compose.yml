@@ -7,8 +7,16 @@ services:
     restart: unless-stopped
     # ports:
     #   - '8080:8080'
+
     expose:
       - 8080
+      - 8081
+      - 8082
+
+    deploy:
+      mode: replicated
+      replicas: 3
+
     networks:
       - backend_network
       - db_network
@@ -32,10 +40,6 @@ services:
       - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
       - POSTGRES_SSLMODE=disable
       - POSTGRES_PORT=5432
-
-    # deploy:
-    #   mode: replicated
-    #   replicas: 3
 
     depends_on:
       database:

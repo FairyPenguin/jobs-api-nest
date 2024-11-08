@@ -35,8 +35,8 @@ docker rm -f $(docker ps -a -q -f name=backend-nest_database_1) || true
 # Remove existing container names to avoid conflicts
 docker compose rm -f || true
 
-# docker-compose up -d --force-recreate --scale nest-backend=3
-docker-compose up -d --force-recreate
+docker-compose up -d --force-recreate --scale nest-backend=3
+# docker-compose up -d --force-recreate
 # Start fresh with new containers
 # docker compose up -d --force-recreate --scale nest-backend=3
 
