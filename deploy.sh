@@ -52,7 +52,7 @@ sleep 10
 
 # Run the migration after  10 seconds of the container creation 
 # docker-compose exec -T nest-backend pnpx prisma migrate deploy
-docker-compose exec -T nest-backend sh -c 'export DATABASE_URL=postgresql://postgres:$(cat /run/secrets/database-password)@database:5432/nestdatabase && pnpx prisma migrate deploy'
+docker-compose exec -T nest-backend sh -c 'export DATABASE_URL=postgresql://postgres:112233@database:5432/nestdatabase && pnpx prisma migrate deploy'
 
 
 
