@@ -46,7 +46,7 @@ services:
 
     environment:
       - POSTGRES_DB=nestdatabase
-      - POSTGRES_PASSWORD: 112233
+      - POSTGRES_PASSWORD:112233
     # ports:
     #   - '5432:5432'
 
