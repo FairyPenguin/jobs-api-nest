@@ -7,8 +7,8 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
 
     dataBaseInit() {
         // Read the database password from the secret file
-        const dbPassword = fs.readFileSync('/run/secrets/database-password', 'utf8').trim();
-        process.env.DATABASE_URL = `postgresql://postgres:${dbPassword}@database:5432/nestdatabase`;
+        // const dbPassword = fs.readFileSync('/run/secrets/database-password', 'utf8').trim();
+        process.env.DATABASE_URL = `postgresql://postgres:112233@database:5432/nest`;
 
         // Now Prisma will use this DATABASE_URL when it initializes
     }

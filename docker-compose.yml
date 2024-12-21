@@ -28,7 +28,7 @@ services:
       # >>>>>>>>>   =postgresql://postgres:11@localhost:5432/nestjsdatabase?schema=public
       # - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/nestdatabase
       - NODE_ENV=production
-      - POSTGRES_DB=nestdatabase #name
+      - POSTGRES_DB=nest #name
       - POSTGRES_HOST=database #hostinside docker netework
       - POSTGRES_USER=postgres
       - POSTGRES_SSLMODE=disable
@@ -45,7 +45,7 @@ services:
     user: postgres
 
     environment:
-      - POSTGRES_DB=nestdatabase
+      - POSTGRES_DB=nest
       - POSTGRES_PASSWORD:112233
     # ports:
     #   - '5432:5432'
