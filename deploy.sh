@@ -34,7 +34,7 @@ docker rm -f $(docker ps -a -q -f name=backend-nest_database_1) || true
 
 # Remove existing container names to avoid conflicts
 
-docker-compose up -d --force-recreate 
+dockercompose up -d --force-recreate 
 # docker-compose up -d --force-recreate
 # Start fresh with new containers
 # docker compose up -d --force-recreate --scale nest-backend=3
@@ -43,11 +43,11 @@ docker-compose up -d --force-recreate
 
 # Verify deployment
 echo "Verifying deployment..."
-sleep 10  # Give containers time to start
+sleep 1  # Give containers time to start
 docker ps | grep nest-backend || echo "No nest-backend containers running"    echo "Number of running instances:"
 docker ps -q -f name=nest-backend | wc -l
 
-sleep 2
+sleep 1
 
 # Run the migration after  10 seconds of the container creation 
 # docker-compose exec -T nest-backend pnpx prisma migrate deploy
