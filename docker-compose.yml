@@ -37,7 +37,7 @@ services:
       - POSTGRES_DB=nestjsdatabase #name
       - POSTGRES_HOST=database #hostinside docker netework
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
+      - POSTGRES_PASSWORD_FILE=112233
       - POSTGRES_SSLMODE=disable
       - POSTGRES_PORT=5432
 
@@ -49,14 +49,13 @@ services:
     image: postgres
     restart: always
     user: postgres
-    secrets:
-      - database-password
 
     environment:
       - POSTGRES_DB=nestdatabase
       - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
     # ports:
     #   - '5432:5432'
+
     expose:
       - 5432
 
@@ -74,11 +73,6 @@ services:
 
 volumes:
   database-data:
-
-secrets:
-  database-password:
-    # file: database/password.txt
-    file: /home/admin/database/password.txt
 
 networks:
   backend_network:
