@@ -13,10 +13,6 @@ services:
       # - 8081
       # - 8082
 
-    deploy:
-      mode: replicated
-      replicas: 3
-
     networks:
       - backend_network
       - db_network
@@ -35,9 +31,9 @@ services:
       - POSTGRES_DB=nestjsdatabase #name
       - POSTGRES_HOST=database #hostinside docker netework
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD_FILE=112233
       - POSTGRES_SSLMODE=disable
       - POSTGRES_PORT=5432
+      - POSTGRES_PASSWORD=112233
 
     depends_on:
       database:
@@ -50,7 +46,7 @@ services:
 
     environment:
       - POSTGRES_DB=nestdatabase
-      - POSTGRES_PASSWORD_FILE=/run/secrets/database-password
+      - POSTGRES_PASSWORD: 112233
     # ports:
     #   - '5432:5432'
 
