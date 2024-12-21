@@ -46,7 +46,7 @@ services:
     container_name: NESTDB
     environment:
       - POSTGRES_DB=nest
-      - POSTGRES_PASSWORD:112233
+      - POSTGRES_PASSWORD=112233
     # ports:
     #   - '5432:5432'
 
