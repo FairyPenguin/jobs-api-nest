@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: greyfighter/prepre:nest-app-v2
+    container_name: nest_test_api
     restart: unless-stopped
     # ports:
     #   - '8080:8080'

@@ -68,4 +68,4 @@ docker image prune -a -f
 # cd # Navigate to the project directory # cd #
 cd /opt/projects/backend-nest/scripts
 echo ${pwd}
-sudo rm deploy.sh
+sudo rm deploy.sh -y
